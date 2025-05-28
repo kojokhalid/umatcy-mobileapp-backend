@@ -1,16 +1,24 @@
 const nodemailer = require("nodemailer");
-
+const host = process.env.SMTP_HOST;
+const port = process.env.SMTP_PORT;
+const user = process.env.SMTP_AUTH_USER;
+const pass = process.env.SMTP_AUTH_PASS;
 export const SendEmail = async (email: string, OTP: string) => {
   console.log("Sending email to:", email);
-
   // Updated transport configuration
+  console.log("SMTP Configuration:", {
+    host,
+    port,
+    user,
+    pass,
+  });
   const transport = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
+    host: host,
+    port: port,
     secure: false, // Changed from true to false for development
     auth: {
-      user: process.env.SMTP_AUTH_USER, // Your Mailtrap credentials
-      pass: process.env.SMTP_AUTH_USER,
+      user: user, // Your Mailtrap credentials
+      pass: pass,
     },
     tls: {
       rejectUnauthorized: false, // Only for development!
