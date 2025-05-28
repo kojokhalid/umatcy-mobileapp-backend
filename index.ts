@@ -10,12 +10,7 @@ app.use(
   cors({
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
-    origins: [
-      "http://localhost:3000",
-      "http://localhost:5173",
-      "exp://172.20.10.3:8081",
-      "http://localhost:8081",
-    ],
+    origins: "*",
   })
 );
 
