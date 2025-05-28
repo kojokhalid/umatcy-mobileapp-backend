@@ -7,7 +7,6 @@ import { SendEmail } from "../lib/sendEmail";
 require("dotenv").config();
 
 const mongoUrl = process.env.MONGO_URI;
-console.log("Connecting to MongoDB at", mongoUrl);
 if (!mongoUrl) {
   throw new Error("MONGO_URI environment variable is not defined");
 }
@@ -18,6 +17,14 @@ export const auth = betterAuth({
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    },
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    },
+    linkedin: {
+      clientId: process.env.LINKEDIN_CLIENT_ID as string,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
     },
   },
   emailAndPassword: {
